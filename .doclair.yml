@@ -1,0 +1,16 @@
+title: YYF
+indexFilename: README.md
+indexHeader: |
+  ## Install
+  ```bash
+  npm install yyf
+  ```
+indexFooter: |
+  ## License
+  License [The MIT License](http://opensource.org/licenses/MIT)
+  Copyright (c) 2015-present Ivan Zakharchenko
+sourceDir: ./src
+docsDir: ./docs
+extensions: 'js|jsx'
+packageJSON: ./package.json
+exclude: utils
