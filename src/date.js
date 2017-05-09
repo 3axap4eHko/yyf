@@ -6,10 +6,18 @@ import { number } from './format';
 import { toArray } from './cast';
 import { fnReturnValue } from './func';
 
+function getWeekNumber(date){
+  date.setHours(0,0,0,0);
+  date.setDate(date.getDate()+4-(date.getDay()||7));
+  return Math.ceil((((date-new Date(date.getFullYear(),0,1))/8.64e7)+1)/7);
+}
+
 const dateFilters = {
   'Y': _date => _date.getFullYear(),
   'y': _date => _date.getFullYear() % 100,
+  'Q': _date => number(Math.floor((_date.getMonth() + 3) / 3), 2),
   'M': _date => number(_date.getMonth() + 1, 2),
+  'N': _date => number(getWeekNumber(_date), 2),
   'D': _date => number(_date.getDate(), 2),
   'W': _date => number(_date.getDay(), 2),
   'h': _date => number(_date.getHours(), 2),
