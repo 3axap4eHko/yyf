@@ -13,7 +13,7 @@ import { toInt } from './cast';
  * @returns {string}
  */
 export function upperFirst(str) {
-  return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+  return str.charAt(0).toUpperCase() + str.substr(1);
 }
 /**
  * Converts string to lower first
@@ -22,7 +22,7 @@ export function upperFirst(str) {
  * @returns {string}
  */
 export function lowerFirst(str) {
-  return str.charAt(0).toLowerCase() + str.substr(1).toLowerCase();
+  return str.charAt(0).toLowerCase() + str.substr(1);
 }
 /**
  *

@@ -5,10 +5,10 @@ import * as fmt from '../src/format';
 describe('Format test suite:', () => {
   describe('string functions:', () => {
     it('fmt.toUpperCaseFirst', function () {
-      expect(fmt.upperFirst('asdFg')).toEqual('Asdfg');
+      expect(fmt.upperFirst('asdFg')).toEqual('AsdFg');
     });
     it('fmt.toPascalCase', function () {
-      expect(fmt.pascalCase('asD qWe-zXc')).toEqual('AsdQweZxc');
+      expect(fmt.pascalCase('asD qWe-zXc')).toEqual('AsDQWeZXc');
     });
     it('fmt.toCapitalize', function () {
       expect(fmt.capitalize('asD qWe-zXc')).toEqual('ASD QWE-ZXC');
