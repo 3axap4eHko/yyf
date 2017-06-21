@@ -24,7 +24,7 @@ function _getTaskList(context, type) {
  * @param {Array.<Function>} [tasks]
  */
 export function push(context, type, ...tasks) {
-  if (tasks.length == 1 && Array.isArray(tasks[0])) {
+  if (tasks.length === 1 && Array.isArray(tasks[0])) {
     tasks = tasks[0];
   }
   const taskList = _getTaskList(context, type);
@@ -39,7 +39,7 @@ export function push(context, type, ...tasks) {
  * @param {...Array.<Function>} [tasks]
  */
 export function remove(context, type, ...tasks) {
-  if (tasks.length == 1 && Array.isArray(tasks)) {
+  if (tasks.length === 1 && Array.isArray(tasks)) {
     tasks = tasks[0];
   }
   const taskList = _getTaskList(context, type);
