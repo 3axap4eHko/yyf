@@ -1,6 +1,6 @@
 {
   "name": "yyf",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Tiny and Fast library for client and server sides",
   "main": "index.js",
   "scripts": {
