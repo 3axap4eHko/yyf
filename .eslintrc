@@ -9,9 +9,7 @@
   },
   "parserOptions": {
     "ecmaVersion": 6,
-    "ecmaFeatures": {
-
-    }
+    "sourceType": "module"
   },
   "rules": {
     "no-debugger": 2,
