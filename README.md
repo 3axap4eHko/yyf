@@ -2,10 +2,14 @@
 
 Tiny and Fast library for client and server sides
 
-## Install
-```bash
-npm install yyf
-```
+[![NPM version][npm-image]][npm-url]
+[![Downloads][downloads-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+
+ ## Install
+ ```bash
+ npm install yyf
+ ```
 
 ## Contents
 - [Cast](docs/cast.md) - Casts a data type to another data type.
@@ -34,3 +38,9 @@ npm install yyf
 ## License
 License [The MIT License](http://opensource.org/licenses/MIT)
 Copyright (c) 2015-2017 Ivan Zakharchenko
+
+[downloads-image]: https://img.shields.io/npm/dm/yyf.svg
+[npm-url]: https://www.npmjs.com/package/yyf
+[npm-image]: https://img.shields.io/npm/v/yyf.svg
+[travis-url]: https://travis-ci.org/3axap4eHko/yyf
+[travis-image]: https://img.shields.io/travis/3axap4eHko/yyf/master.svg
