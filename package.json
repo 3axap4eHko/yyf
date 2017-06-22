@@ -8,8 +8,8 @@
     "build": "gulp",
     "lint": "eslint src/",
     "doc": "esdoc",
-    "patch-release": "npm run build && npm run test && npm version patch && git push && git push --tags && cd build && npm publish",
-    "minor-release": "npm run build && npm run test && npm version minor && git push && git push --tags && cd build && npm publish"
+    "patch-release": "npm run build && npm run test && npm version patch && git push && git push --tags && npm run build && cd build && npm publish",
+    "minor-release": "npm run build && npm run test && npm version minor && git push && git push --tags && npm run build && cd build && npm publish"
   },
   "author": "Ivan Zakharchenko <3axap4eHko.development@gmail.com> (http://potofcode.com/)",
   "license": "MIT",
