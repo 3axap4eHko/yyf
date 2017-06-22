@@ -1,6 +1,10 @@
-import pool, { poolIterator } from '../src/pool';
+import pool from '../src/pool';
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000000;
+
+function delay(timeout, value) {
+  return new Promise(resolve => setTimeout(resolve, timeout, value));
+}
 
 describe('Pool test suite:', () => {
 
@@ -13,61 +17,16 @@ describe('Pool test suite:', () => {
       .catch(error => expect(error).toBeUndefined());
   });
 
-  it('Should handle pool', function (done) {
-    const testArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    pool(testArray, (value, next) => next(2 * value), 1)
-      .then(results => {
-        expect(results.length).toEqual(testArray.length);
-        testArray.forEach((value, id) => {
-          expect(results[id]).toEqual(value * 2);
-        });
-        done();
-      })
-      .catch(error => expect(error).toBeUndefined());
-  });
-
-  it('Should handle pool', function (done) {
-
-    let activePoolSize = 0;
-    const testArray = Array.from({ length: 100 });
-    const poolSize = 2;
-
-    pool(testArray, (value, next) => {
-      activePoolSize+=1;
-      setTimeout(() => {
-        activePoolSize-=1;
-        next();
-      }, 100);
-      expect(activePoolSize <= poolSize).toBeTruthy();
-    }, poolSize)
-      .then(() => {
-        done();
-      })
-      .catch(error => expect(error).toBeUndefined());
-  });
   it('Should handle pool iterator', function (done) {
 
     let activePoolSize = 0;
-
-    function generator() {
-      let nextIndex = 0;
-
-      return {
-        next() {
-          return nextIndex < 10 ?
-            {value: nextIndex++, done: false} :
-            {done: true};
-        }
-      };
-    }
-    const testIterator = generator();
     const poolSize = 2;
 
-    poolIterator(testIterator, value => {
-      activePoolSize+=1;
+    pool([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], value => {
+      activePoolSize += 1;
       expect(activePoolSize).toBeLessThanOrEqual(poolSize);
       return new Promise(resolve => setTimeout(() => {
-        activePoolSize-=1;
+        activePoolSize -= 1;
         resolve(value * 2);
       }, 100));
     }, poolSize)
@@ -77,6 +36,30 @@ describe('Pool test suite:', () => {
         done();
       })
       .catch(error => expect(error).toBeUndefined());
+  });
+
+  it('Should handle pool iterator items before exception', function (done) {
+
+    let counter = 0;
+    const poolSize = 4;
+
+    pool([3, 2, 1, 0], value => {
+      if (value === 3) {
+        throw new Error();
+      }
+
+      return delay(value * 100, value * 2)
+        .then(result => {
+          counter++;
+          return result;
+        });
+    }, poolSize)
+      .then(() => done(new Error()))
+      .catch(error => {
+        expect(error.size).toEqual(0);
+        expect(counter).toEqual(poolSize - 1);
+        done();
+      });
   });
 
 });

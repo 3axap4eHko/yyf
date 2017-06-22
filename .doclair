@@ -8,7 +8,7 @@ indexHeader: |
 indexFooter: |
   ## License
   License [The MIT License](http://opensource.org/licenses/MIT)
-  Copyright (c) 2015-present Ivan Zakharchenko
+  Copyright (c) 2015-2017 Ivan Zakharchenko
 sourceDir: ./src
 docsDir: ./docs
 extensions: 'js|jsx'

@@ -6,7 +6,7 @@
 ``` javascript
 import Pool from 'yyf/pool';
 ```
-> Pool target data to handler
+> Pools and executes tasks
 
 
 > Multiply all values by 2 one by one
@@ -15,7 +15,7 @@ import Pool from 'yyf/pool';
 ``` javascript
 const testArray = [0,1,2,3,4,5,6,7,8,9];
 const poolSize = 1;
-pool(testArray, (value, next) => next(2*value), poolSize)
+pool(testArray, value => 2*value, poolSize)
  .then(result => console.log(result)); // [0,2,4,6,8,10,12,14,16,18]
 ```
 

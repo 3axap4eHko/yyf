@@ -23,6 +23,7 @@
 - [`function isGeneratorFunction`](#function-isgeneratorfunction)
 - [`function isInteger`](#function-isinteger)
 - [`function isIterable`](#function-isiterable)
+- [`function isIterator`](#function-isiterator)
 - [`function isKeyValue`](#function-iskeyvalue)
 - [`function isNotDefined`](#function-isnotdefined)
 - [`function isNotEmptyArray`](#function-isnotemptyarray)
@@ -289,6 +290,17 @@ import { isIterable } from 'yyf/check';
 
 ``` javascript
 function isIterable(value)
+```
+---
+
+<a id="function-isiterator"></a><h2>function isIterator</h2>
+``` javascript
+import { isIterator } from 'yyf/check';
+```
+> Checks if value is iterator
+
+``` javascript
+function isIterator(value)
 ```
 ---
 

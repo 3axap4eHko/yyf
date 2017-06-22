@@ -1,19 +1,23 @@
 import { push, wait } from '../src/task';
 
+function delay(timeout, result) {
+  return new Promise(resolve => setTimeout(resolve, timeout, result));
+}
+
 describe('Task test suite:', () => {
   const context = {};
 
-  function add2(arg, complete) {
-    complete(arg.result += 2);
+  function add2(arg) {
+    return arg.result += 2;
   }
 
-  function mul2(arg, complete) {
-    complete(arg.result *= 2);
+  function mul2(arg) {
+    return arg.result *= 2;
   }
 
   const taskImmediateList = [add2, mul2];
-  const taskDelayedList = taskImmediateList.map(
-    (task, id) => (arg, complete) => setTimeout(task, 100 * (taskImmediateList.length - id), arg, complete));
+  const taskDelayedList = taskImmediateList
+    .map((task, id) => arg => delay(100 * (taskImmediateList.length - id), arg).then(task));
 
   push(context, 'immediate', taskImmediateList);
   push(context, 'delayed', taskDelayedList);

@@ -258,6 +258,15 @@ export function isGenerator(value) {
   return typeof value === TYPE_OBJECT && classOf(value) === 'Generator';
 }
 /**
+ * Checks if value is iterator
+ *
+ * @param {*} value
+ * @returns {boolean|string}
+ */
+export function isIterator(value) {
+  return typeof value === TYPE_OBJECT && classOf(value).slice(-8) === 'Iterator';
+}
+/**
  * Checks if value is Symbol
  *
  * @param {*} value

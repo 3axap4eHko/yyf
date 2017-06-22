@@ -70,11 +70,9 @@ export function clear(context, type) {
  * @return {Promise}
  */
 export function wait(context, type, size, ...args) {
-  return new Promise((resolve, reject) => {
-    const taskList = _getTaskList(context, type);
-    const handler = (task, next) => task(...args, next);
-    pool(taskList, handler, size)
-      .then(resolve)
-      .catch(reject);
-  });
+
+  const taskList = _getTaskList(context, type);
+  const handler = task => task(...args);
+
+  return pool(taskList, handler, size);
 }
