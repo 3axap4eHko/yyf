@@ -1,5 +1,5 @@
 /**
- * Checks data value and type.
+ * Types validator module.
  *
  * @module Check
  */

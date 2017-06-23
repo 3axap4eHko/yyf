@@ -12,11 +12,11 @@ Tiny and Fast library for client and server sides
  ```
 
 ## Contents
-- [Cast](docs/cast.md) - Casts a data type to another data type.
-- [Check](docs/check.md) - Checks data value and type.
+- [Cast](docs/cast.md) - Converter module.
+- [Check](docs/check.md) - Types validator module.
 - [Date](docs/date.md) - Date operation module
 - [Debug](docs/debug.md) - Debug tools
-- [Event](docs/event.md) - Event controller
+- [Event](docs/event.md) - Event manager
 - [Format](docs/format.md) - String format module
 - [Functions](docs/func.md) - Set of useful functions
 - [Iterate](docs/iterate.md) - Iterates data types
@@ -28,8 +28,8 @@ Tiny and Fast library for client and server sides
 - [LogStdOut](docs/log/stdout.md) - Logs data to stdout stream
 - [LogStream](docs/log/stream.md) - Logs data to stream
 - [Pipe](docs/pipe.md) - Pipe class to pipe data as a stream
-- [Pool](docs/pool.md) - Pools and executes tasks
-- [Private](docs/private-scope.md) - Creates private scope based on context
+- [pool](docs/pool.md) - Pools and executes tasks
+- [privateScope](docs/private-scope.md) - Creates private scope based on context
 - [Random](docs/random.md) - Generates random values
 - [Reflection](docs/reflection.md) - Reflection
 - [Task](docs/task.md) - Task manager

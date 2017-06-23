@@ -1,13 +1,13 @@
 /**
  * Creates private scope based on context
- * @module Private
+ * @module privateScope
  */
 /**
  *
  * @returns {Function}
  * @example
- * import $private from 'yyf/private-scope';
- * const $p = $private();
+ * import privateScope from 'yyf/private-scope';
+ * const $p = privateScope();
  *
  * class A {
  *  constructor(secureData) {

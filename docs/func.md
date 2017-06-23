@@ -17,6 +17,7 @@
 - [`function fnReturnValue`](#function-fnreturnvalue)
 - [`function fnSequencer`](#function-fnsequencer)
 - [`function fnTrue`](#function-fntrue)
+- [`function fnTry`](#function-fntry)
 
 <a id="function-fnargsexpand"></a><h2>function fnArgsExpand</h2>
 ``` javascript
@@ -204,4 +205,15 @@ import { fnTrue } from 'yyf/func';
 
 ``` javascript
 function fnTrue()
+```
+---
+
+<a id="function-fntry"></a><h2>function fnTry</h2>
+``` javascript
+import { fnTry } from 'yyf/func';
+```
+> Try to execute callback
+
+``` javascript
+function fnTry(callback, tryCount)
 ```

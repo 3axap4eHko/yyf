@@ -1,5 +1,5 @@
 /**
- * Casts a data type to another data type.
+ * Converter module.
  *
  * @module Cast
  */

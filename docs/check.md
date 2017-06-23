@@ -108,7 +108,7 @@ const TYPE_SYMBOL = 'symbol';
 ``` javascript
 import { TYPE_UNDEFINED } from 'yyf/check';
 ```
-> Checks data value and type.
+> Types validator module.
 
 > Undefined type string
 

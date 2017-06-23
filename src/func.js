@@ -174,3 +174,18 @@ export function fnCurryRight(callback, ...curryArgs) {
 export function fnCompose(...callbacks) {
   return (...args) => callbacks.reduce((args, fn) => [fn(...args)], args)[0];
 }
+
+/**
+ * Try to execute callback
+ *
+ * @param {Function} callback
+ * @param {Number} [tryCount]
+ * @return {Promise}
+ */
+export function fnTry(callback, tryCount = 3) {
+  if (!tryCount) {
+    return Promise.reject();
+  }
+  return callback()
+    .catch(() => fnTry(callback, tryCount--));
+}

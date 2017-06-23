@@ -1,5 +1,5 @@
 /**
- * Event controller
+ * Event manager
  * @module Event
  */
 

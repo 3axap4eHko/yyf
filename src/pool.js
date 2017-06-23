@@ -1,12 +1,13 @@
 /**
  * Pools and executes tasks
- * @module Pool
+ * @module pool
  * @param {Array|Object|String|Function|Iterator} target
  * @param {Function} handler
  * @param {Number} [poolSize]
  *
  * @returns {Promise.<*>}
  * @example <caption>Multiply all values by 2 one by one</caption>
+ * import pool from 'yyf/pool';
  *
  * const testArray = [0,1,2,3,4,5,6,7,8,9];
  * const poolSize = 1;
