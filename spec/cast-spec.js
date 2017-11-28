@@ -4,8 +4,10 @@ import * as _ from '../src/cast';
 import * as R from '../src/random';
 
 const TestArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const TestString = '123456789';
+const TestGroupString = ['12','34','56','78','9'];
+const TestGroupStringRight = ['1','23','45','67','89'];
 const TestComplexArray = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 0]];
-
 
 describe('Convert test suite:', () => {
   it('toInt', () => {
@@ -43,6 +45,14 @@ describe('Convert test suite:', () => {
     var array = _.toFlatArray(TestComplexArray);
     expect(Array.isArray(array)).toBeTruthy();
     expect(array).toEqual(TestArray);
+  });
+  it('group', () => {
+    var group = _.groupString(TestString, 2);
+    expect(Array.isArray(group)).toBeTruthy();
+    expect(group).toEqual(TestGroupString);
+    var groupRight = _.groupString(TestString, 2, true);
+    expect(Array.isArray(groupRight)).toBeTruthy();
+    expect(groupRight).toEqual(TestGroupStringRight);
   });
   it('toComplexArray', () => {
     var array = _.toComplexArray(TestArray, 2);
@@ -179,7 +189,7 @@ describe('Convert test suite:', () => {
     let testCount = 84;
     while (testCount--) {
       const test = Array.from({ length: R.number(50, 100) }).map(() => R.number(255));
-      expect(_.decodeHash(_.encodeBytes(test, testCount + 2), testCount  + 2)).toEqual(test);
+      expect(_.decodeHash(_.encodeBytes(test, testCount + 2), testCount + 2)).toEqual(test);
     }
   });
 });

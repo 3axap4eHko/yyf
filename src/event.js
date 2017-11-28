@@ -3,7 +3,6 @@
  * @module Event
  */
 
-
 const eventsMap = new WeakMap();
 /**
  * Returns event's listeners

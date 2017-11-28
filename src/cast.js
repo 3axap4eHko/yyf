@@ -19,6 +19,7 @@ import { requiredArg } from './utils';
 export function toInt(value) {
   return isFinite(value = parseInt(value)) ? value : 0;
 }
+
 /**
  * Casts value to int or returns defaultValue
  *
@@ -35,6 +36,7 @@ export function toInt(value) {
 export function toIntOrDefault(value, def) {
   return isFinite(value = parseInt(value)) ? value : def || 0;
 }
+
 /**
  * Casts value to float or returns 0.0
  *
@@ -49,6 +51,7 @@ export function toIntOrDefault(value, def) {
 export function toFloat(value) {
   return isFinite(value = parseFloat(value)) ? value : 0.0;
 }
+
 /**
  * Casts value to float or returns default value
  *
@@ -59,6 +62,7 @@ export function toFloat(value) {
 export function toFloatOrDefault(value, def) {
   return isFinite(value = parseFloat(value)) ? value : def || 0.0;
 }
+
 /**
  * Casts value as int to hex
  *
@@ -68,6 +72,7 @@ export function toFloatOrDefault(value, def) {
 export function toHex(value) {
   return toInt(value).toString(16);
 }
+
 /**
  * Casts value as int or default value to hex
  *
@@ -78,6 +83,7 @@ export function toHex(value) {
 export function toHexOrDefault(value, def) {
   return toIntOrDefault(value, def).toString(16);
 }
+
 /**
  * Casts value as int to bin String
  *
@@ -87,6 +93,7 @@ export function toHexOrDefault(value, def) {
 export function toBin(value) {
   return toInt(value).toString(2);
 }
+
 /**
  * Casts value as int or default value to bin String
  *
@@ -97,6 +104,7 @@ export function toBin(value) {
 export function toBinOrDefault(value, def) {
   return toIntOrDefault(value, def).toString(2);
 }
+
 /**
  * Casts value as int to oct String
  *
@@ -106,6 +114,7 @@ export function toBinOrDefault(value, def) {
 export function toOct(value) {
   return toInt(value).toString(8);
 }
+
 /**
  * Casts value as int or default value to oct String
  *
@@ -116,6 +125,7 @@ export function toOct(value) {
 export function toOctOrDefault(value, def) {
   return toIntOrDefault(value, def).toString(8);
 }
+
 /**
  * Casts value to String
  *
@@ -125,6 +135,7 @@ export function toOctOrDefault(value, def) {
 export function toString(value) {
   return value !== null && typeof value !== 'undefined' ? value.toString() : '';
 }
+
 /**
  * Casts value to array
  *
@@ -134,6 +145,7 @@ export function toString(value) {
 export function toArray(value) {
   return Array.from(value);
 }
+
 /**
  * Casts values as 2 dim array to flat array
  *
@@ -143,6 +155,7 @@ export function toArray(value) {
 export function toFlatArray(value) {
   return toArray(value).reduce((result, array) => result.concat(toArray(array)), []);
 }
+
 /**
  * Casts values as array to 2 dim array from right to left
  *
@@ -155,6 +168,7 @@ export function toComplexArrayRight(value, size = requiredArg('toComplexArrayRig
   const length = value.length;
   return new Array(Math.ceil(length / size)).fill(0).map(() => value.splice(-size)).reverse();
 }
+
 /**
  * Casts values as array to 2 dim array from left to right
  *
@@ -167,6 +181,7 @@ export function toComplexArray(value, size = requiredArg('toComplexArray: size')
   const length = value.length;
   return new Array(Math.ceil(length / size)).fill(0).map((v, idx) => value.slice(idx = idx * size, idx + size));
 }
+
 /**
  * Creates an array from arguments
  *
@@ -176,6 +191,7 @@ export function toComplexArray(value, size = requiredArg('toComplexArray: size')
 export function toArrayOf(...args) {
   return args;
 }
+
 /**
  * Casts value to JSON string
  *
@@ -185,6 +201,7 @@ export function toArrayOf(...args) {
 export function toJsonString(value) {
   return JSON.stringify(value);
 }
+
 /**
  * Casts value as JSON string
  *
@@ -194,6 +211,7 @@ export function toJsonString(value) {
 export function toJsonObject(value) {
   return JSON.parse(value);
 }
+
 /**
  * Casts value as string or array of chars to array of bytes
  *
@@ -203,6 +221,7 @@ export function toJsonObject(value) {
 export function toCharCodes(value) {
   return toArray(toString(value)).map(c => c.charCodeAt(0));
 }
+
 /**
  * Casts key and value to {key, value} object
  *
@@ -213,6 +232,7 @@ export function toCharCodes(value) {
 export function toKeyValue(key, value) {
   return ({ key, value });
 }
+
 /**
  * Casts extracted value from target by key and key to {key, value} object
  *
@@ -223,6 +243,7 @@ export function toKeyValue(key, value) {
 export function toKeyValueOf(target, key) {
   return ({ key, value: target[key] });
 }
+
 /**
  * Padding leading zeros
  *
@@ -234,6 +255,7 @@ export function toKeyValueOf(target, key) {
 function padZeroLeft(value, size) {
   return `000000000000000000000${value}`.slice(-size);
 }
+
 /**
  * Casts value as array of bytes to int value
  *
@@ -243,6 +265,7 @@ function padZeroLeft(value, size) {
 export function fromBytesToInt(value) {
   return toArray(value).reduce((a, b) => (a << 8) + b);
 }
+
 /**
  * Casts value as int to array of bytes
  *
@@ -255,6 +278,7 @@ export function fromIntToBytes(value) {
     .reverse()
     .map(shift => [value >> shift, value -= value >> shift << shift][0]);
 }
+
 /**
  * Casts value as single byte to hex string with leading zero
  *
@@ -264,6 +288,7 @@ export function fromIntToBytes(value) {
 export function fromByteToHex(value) {
   return padZeroLeft(toHex(value), 2);
 }
+
 /**
  * Casts value as hex string to single byte
  *
@@ -273,6 +298,7 @@ export function fromByteToHex(value) {
 export function fromHexToByte(value) {
   return parseInt(value.slice(-2), 16) | 0;
 }
+
 /**
  * Casts value as single byte to binary string
  *
@@ -282,6 +308,7 @@ export function fromHexToByte(value) {
 export function fromByteToBits(value) {
   return padZeroLeft(toBin(value), 8);
 }
+
 /**
  * Casts value as binary string to single byte
  *
@@ -291,6 +318,7 @@ export function fromByteToBits(value) {
 export function fromBitsToByte(value) {
   return parseInt(value.slice(-8), 2) | 0;
 }
+
 /**
  * Casts value as binary string to hex string
  *
@@ -300,6 +328,7 @@ export function fromBitsToByte(value) {
 export function fromBitsToHex(value) {
   return (toHex(parseInt(value, 2) | 0));
 }
+
 /**
  * Casts value as hex string to binary string
  *
@@ -309,6 +338,7 @@ export function fromBitsToHex(value) {
 export function fromHexToBits(value) {
   return (toBin(parseInt(value, 16) | 0));
 }
+
 /**
  * Casts value as hex string to single nibble binary string
  *
@@ -318,6 +348,7 @@ export function fromHexToBits(value) {
 export function fromHexToNibble(value) {
   return padZeroLeft(fromHexToBits(value), 4);
 }
+
 /**
  * Casts value as single nibble binary string to hex string
  *
@@ -327,6 +358,7 @@ export function fromHexToNibble(value) {
 export function fromNibbleToHex(value) {
   return padZeroLeft(fromBitsToHex(value), 1);
 }
+
 /**
  * Casts value as single byte to single nibble binary string
  *
@@ -336,6 +368,7 @@ export function fromNibbleToHex(value) {
 export function fromByteToNibble(value) {
   return padZeroLeft(fromByteToBits(value), 4);
 }
+
 /**
  * Casts value as single nibble binary string to single byte
  *
@@ -345,6 +378,7 @@ export function fromByteToNibble(value) {
 export function fromNibbleToByte(value) {
   return fromBitsToByte(value);
 }
+
 /**
  * Casts value as array of bytes to hex string
  *
@@ -354,6 +388,7 @@ export function fromNibbleToByte(value) {
 export function fromBytesToHex(value) {
   return toArray(value).map(fromByteToHex).join('');
 }
+
 /**
  * Casts value as hex string to array of bytes
  *
@@ -363,6 +398,7 @@ export function fromBytesToHex(value) {
 export function fromHexToBytes(value) {
   return toComplexArray(value, 2).map(nibbles => fromHexToByte(nibbles.join('')));
 }
+
 /**
  * Casts value as array of bytes to array of binary strings
  *
@@ -372,6 +408,7 @@ export function fromHexToBytes(value) {
 export function fromBytesToBits(value) {
   return toArray(value).map(fromByteToBits);
 }
+
 /**
  * Casts value as array of binary strings to array of bytes
  *
@@ -381,6 +418,7 @@ export function fromBytesToBits(value) {
 export function fromBitsToBytes(value) {
   return toArray(value).map(fromBitsToByte);
 }
+
 /**
  * Casts value as hex string to array of nibble strings
  *
@@ -390,6 +428,7 @@ export function fromBitsToBytes(value) {
 export function fromHexToNibbles(value) {
   return toArray(value).map(fromHexToNibble);
 }
+
 /**
  * Casts value as array of nibble strings to hex string
  *
@@ -399,6 +438,7 @@ export function fromHexToNibbles(value) {
 export function fromNibblesToHex(value) {
   return toArray(value).map(fromNibbleToHex).join('');
 }
+
 /**
  * Casts byte to array of 2 nibble strings
  *
@@ -408,6 +448,7 @@ export function fromNibblesToHex(value) {
 export function fromByteToNibbles(value) {
   return fromHexToNibbles(fromByteToHex(value));
 }
+
 /**
  * Casts array of 2 nibble strings to byte
  *
@@ -417,6 +458,7 @@ export function fromByteToNibbles(value) {
 export function fromNibblesToByte(value) {
   return fromHexToByte(fromNibblesToHex(value));
 }
+
 /**
  * Casts array of bytes to array of nibble strings
  *
@@ -426,6 +468,7 @@ export function fromNibblesToByte(value) {
 export function fromBytesToNibbles(value) {
   return toArray(value).map(fromByteToNibble);
 }
+
 /**
  * Casts array of nibble strings to array of bytes
  *
@@ -435,6 +478,7 @@ export function fromBytesToNibbles(value) {
 export function fromNibblesToBytes(value) {
   return fromHexToBytes(fromNibblesToHex(value));
 }
+
 /**
  * Casts char codes of string or array of strings to hex string
  *
@@ -444,6 +488,7 @@ export function fromNibblesToBytes(value) {
 export function fromStringToHex(value) {
   return toCharCodes(value).map(fromByteToHex);
 }
+
 /**
  * Creates array of characters
  *
@@ -456,12 +501,29 @@ export function charRange(from, to) {
   const finish = to.charCodeAt(0);
   return new Array(finish - start + 1).fill(start).map((v, idx) => String.fromCharCode(v + idx));
 }
+
 /**
  * Default alphabet for encoding
  *
  * @type {String}
  */
 export const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()[]{}<>+-=:;?_';
+
+/**
+ *
+ * @param string String
+ * @param size Number
+ * @param fromRight Boolean
+ * @returns Array.<String>
+ */
+export function groupString(string, size, fromRight = false) {
+  const reminder = string.length % size;
+  const regexp = new RegExp(`.{1,${size}}`, 'g');
+  if (fromRight && reminder) {
+    return [string.slice(0, reminder)].concat(string.slice(reminder).match(regexp));
+  }
+  return string.match(regexp);
+}
 
 /**
  * Encode bytes to alphabet
@@ -477,10 +539,12 @@ export function encodeBytes(bytes, alphabet = ALPHABET) {
   const base = alphabet.length;
   const groupSize = Math.floor(Math.log2(base));
   const bits = fromBytesToBits(bytes).join('');
-  return toComplexArrayRight(bits, groupSize)
-    .map(value => parseInt(value.join(''), 2))
+
+  return groupString(bits, groupSize, true)
+    .map(value => parseInt(value, 2))
     .map(idx => alphabet[idx]).join('');
 }
+
 /**
  * Decode bytes to alphabet
  *
@@ -496,12 +560,12 @@ export function decodeHash(hash, alphabet = ALPHABET) {
   const groupSize = Math.floor(Math.log2(base));
   const bits = hash.split('')
     .map(char => alphabet.indexOf(char))
-    .map(idx => padZeroLeft(idx.toString(2), groupSize)).join('').split('');
-
+    .map(idx => padZeroLeft(idx.toString(2), groupSize)).join('');
   const paddingSize = bits.length % 8;
-  return toComplexArrayRight(bits.slice(paddingSize), 8)
-    .map(value => parseInt(value.join(''), 2));
+  return groupString(bits.slice(paddingSize), 8, true)
+    .map(value => parseInt(value, 2));
 }
+
 /**
  * Casts utf8 string to array of bytes
  *
@@ -528,6 +592,7 @@ export function fromUTF8ToArray(text) {
   }
   return bytes;
 }
+
 /**
  * Casts array of bytes to utf8 string
  *
